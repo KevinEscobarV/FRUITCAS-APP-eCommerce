@@ -1,0 +1,62 @@
+<?php
+
+use App\Http\Livewire\ProductsTable;
+use App\Http\Livewire\Contact;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
+use App\Http\Livewire\CreateOrder;
+use App\Http\Livewire\ShoppingCart;
+
+use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Routing\RouteAction;
+
+Route::resource('users', UserController::class)->names('users');
+
+Route::resource('roles', RoleController::class)->names('roles');
+
+
+Route::get('/', WelcomeController::class);
+
+route::get('search', SearchController::class)->name('search');
+
+Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::get('prducts/{product}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
+
+Route::get('orders/create',CreateOrder::class)->middleware('auth')->name('orders.create');
+
+Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
+
+
+Route::get('home', function () {
+    return view('home');
+});
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/products', ProductsTable::class)
+
+->name('products');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/contact', Contact::class)
+
+->name('contact');
+
+
+
+
+
+
