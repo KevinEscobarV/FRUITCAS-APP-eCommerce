@@ -11,6 +11,13 @@
     // Crea un objeto de preferencia
     $preference = new MercadoPago\Preference();
 
+    $shipments = new MercadoPago\Shipments();
+
+    $shipments->cost = $order->shipping_cost;
+    $shipments->mode = "not_specified";
+
+    $preference->shipments = $shipments;
+
     // Crea un ítem en la preferencia
 
     foreach ($items as $product) {
@@ -20,6 +27,13 @@
             $item->unit_price = $product->price;
             $products[] = $item;
         }
+
+    $preference->back_urls = array(
+        "success" => route('orders.pay', $order),
+        "failure" => "http://www.tu-sitio/failure",
+        "pending" => "http://www.tu-sitio/pending"
+    );
+    $preference->auto_return = "approved";
 
     $preference->items = $products;
     $preference->save();
@@ -113,18 +127,49 @@
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 flex justify-between items-center">
             <img class="max-h-32" src="{{ asset('img/mercado_pago_1.jpg') }}" alt="">
             <div class="text-gray-700">
-                <p class="text-sm font-semibold text-right">
-                    Subtotal: COP {{$order->total - $order->shipping_cost}} 
-                </p>
-                <p class="text-sm font-semibold text-right">
-                    Envío: COP {{$order->shipping_cost}} 
-                </p>
-                <p class="text-lg font-semibold uppercase mb-2">
-                    Total: COP {{number_format(($order->total), 0, '', ',')}}
-                </p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="text-sm font-semibold text-right mr-5">
+                                    Subtotal: COP $ 
+                                </p>
+                            </td>
+                            <td>
+                                <p class="text-right">
+                                    {{number_format(($order->total - $order->shipping_cost), 0, '', '.')}}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="text-sm font-semibold text-right mr-5">
+                                    Envío: COP $ 
+                                </p>
+                            </td>
+                            <td>
+                                <p class="text-right">
+                                    {{number_format(($order->shipping_cost), 0, '', '.')}}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="text-lg font-semibold uppercase mb-2 text-right mr-5">
+                                    Total: COP $ 
+                                </p>
+                            </td>
+                            <td>
+                                <p class="text-lg font-semibold uppercase mb-2 text-right">
+                                    {{number_format(($order->total), 0, '', '.')}}
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <div class="cho-container text-right">
-
                 </div>
 
             </div>
@@ -139,7 +184,7 @@
     <script>
         // Agrega credenciales de SDK
           const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-                locale: 'es-AR'
+                locale: 'es-CO'
           });
         
           // Inicializa el checkout
