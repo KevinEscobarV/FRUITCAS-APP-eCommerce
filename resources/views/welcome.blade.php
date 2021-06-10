@@ -22,7 +22,9 @@
 
     </div>
 </div>
+
     <livewire:navigation-footer></livewire:navigation-footer>
+
 
 @push('script')
     <script>

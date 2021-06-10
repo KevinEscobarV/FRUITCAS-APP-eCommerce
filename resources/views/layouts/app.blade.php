@@ -102,7 +102,22 @@
 
 </script>
 
-    @stack('script')
+    
+
+    <script>
+        var botmanWidget = {
+            title: 'ChatBot FruitCas',
+            aboutText: 'Fruitcas',
+            placeholderText: 'Envia un mensaje al Bot',
+            mainColor: '#FFCD00',
+            bubbleBackground:'#FFCD00',
+            introMessage: "✋ Hola! Estoy aqui para ayudarte"
+        };
+    </script>
+   
+   <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
+   @stack('script')
 
 </body>
 

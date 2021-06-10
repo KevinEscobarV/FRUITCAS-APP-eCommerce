@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    @php
+@php
         
     // SDK de Mercado Pago
     require base_path('vendor/autoload.php');
@@ -29,9 +29,10 @@
         }
 
     $preference->back_urls = array(
+
         "success" => route('orders.pay', $order),
-        "failure" => "http://www.tu-sitio/failure",
-        "pending" => "http://www.tu-sitio/pending"
+        "failure" => route('orders.pay', $order),
+        "pending" => route('orders.pay', $order),
     );
     $preference->auto_return = "approved";
 
@@ -39,7 +40,7 @@
     $preference->save();
 
     
-    @endphp
+@endphp
 
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -184,7 +185,7 @@
     <script>
         // Agrega credenciales de SDK
           const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-                locale: 'es-CO'
+                locale: 'es-AR'
           });
         
           // Inicializa el checkout

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container mx-auto py-8">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-8">
         <ul>
             @forelse($products as $product)
 
