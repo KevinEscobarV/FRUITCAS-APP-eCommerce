@@ -2,7 +2,7 @@ var nombres=[];
 var valores=[];
 
 $.ajax({
-  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
   url: 'admin/chart',
   method: 'POST',
 }).done(function(respuesta){
