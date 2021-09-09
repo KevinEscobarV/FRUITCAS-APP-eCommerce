@@ -21,8 +21,8 @@
                 @foreach ($category->subcategories as $subcategory)
                     <li class="py-2 text-sm ">
                         <a class="cursor-pointer hover:text-teal-800 capitalize 
-                        {{ $subcategoria == $subcategory->name ? 'text-orange-500 font-semibold' : '' }}"
-                            wire:click="$set('subcategoria', '{{ $subcategory->name }}')">
+                        {{ $subcategoria == $subcategory->slug ? 'text-orange-500 font-semibold' : '' }}"
+                            wire:click="$set('subcategoria', '{{ $subcategory->slug }}')">
 
                             {{ $subcategory->name }}
                         </a>
@@ -53,7 +53,7 @@
         <div class="md:col-span-2 lg:col-span-4">
             @if ($view == 'grid')
                 <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                         <li class="bg-white rounded-xl shadow-lg mb-5 mr-2 ml-2">
                             <article>
                                 <figure>
@@ -68,13 +68,40 @@
                                 </div>
                             </article>
                         </li>
-                    @endforeach
+                    @empty
+                    
+                    <li class="md:col-span-2 lg:col-span-4">
+                        <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                            <div class="flex">
+                              <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                              <div>
+                                <p class="font-bold">Upss!</p>
+                                <p class="text-sm">No existe ningún producto con ese filtro.</p>
+                              </div>
+                            </div>
+                          </div>
+                    </li>
+
+                    @endforelse
                 </ul>
             @else
                 <ul>
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                         <x-product-list :product="$product" />
-                    @endforeach
+
+                    @empty
+                   
+                        <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                            <div class="flex">
+                              <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                              <div>
+                                <p class="font-bold">Upss!</p>
+                                <p class="text-sm">No existe ningún producto con ese filtro.</p>
+                              </div>
+                            </div>
+                          </div>
+                  
+                    @endforelse
                 </ul>
             @endif
 

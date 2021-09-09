@@ -7,9 +7,11 @@
                     <ul class="slides">
 
                         @foreach ($product->images as $image)
+                        
                             <li data-thumb="{{ Storage::url($image->url) }}">
-                                <img src="{{ Storage::url($image->url) }}" />
+                                <img class="rounded-md object-cover object-center" src="{{ Storage::url($image->url) }}" />
                             </li>
+                        
                         @endforeach
 
                     </ul>
@@ -21,7 +23,13 @@
                 <div class="flex">
                     <p class="text-gray-700">Marca: <a class="underline capitalize hover:text-orange-500"
                             href="">{{ $product->brand->name }}</a></p>
-                    <p class="text-gray-700 mx-6">5 <i class="fas fa-star text-sm text-orange-500"></i></p>
+                    <p class="text-gray-700 mx-6">5 
+                        <i class="fas fa-star text-sm text-orange-500"></i>
+                        <i class="fas fa-star text-sm text-orange-500"></i>
+                        <i class="fas fa-star text-sm text-orange-500"></i>
+                        <i class="fas fa-star text-sm text-orange-500"></i>
+                        <i class="fas fa-star text-sm text-orange-500"></i>
+                    </p>
                     <a class="text-orange-500 underline hover:text-orange-800" href="">39 reseñas</a>
                 </div>
                 <p class="text-2xl font-semibold text-teal-900 my-4">COP {{ $product->price }}</p>
@@ -60,7 +68,6 @@
                     controlNav: "thumbnails"
                 });
             });
-
         </script>
     @endpush
 

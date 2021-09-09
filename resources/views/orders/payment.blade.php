@@ -58,8 +58,8 @@
                     <p>FruitCas Tauramena Casanare Calle 6 # 9 - 58</p>                      
                     @else
                     <p>Los productos seran enviados a:</p>
-                    <p>{{{$order->address}}}</p>
-                    <p>{{$order->department->name}} - {{$order->city->name}} - {{$order->district->name}}</p>
+                    <p>{{{$envio->address}}}</p>
+                    <p>{{$envio->department}} - {{$envio->city}} - {{$envio->district}}</p>
                     @endif
 
                 </div>

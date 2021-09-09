@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BotManController;
 use App\Http\Livewire\ProductsTable;
 use App\Http\Livewire\Contact;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
@@ -51,13 +53,15 @@ Route::middleware(['auth'])->group(function (){
 
 
 
-Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
+Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::get('/dashboard', HomeController::class)->name('dashboard');
 
 
 
@@ -65,7 +69,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/products', ProductsTable:
 
 ->name('products');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/contact', Contact::class)
+Route::get('/contact', Contact::class)
 
 ->name('contact');
 

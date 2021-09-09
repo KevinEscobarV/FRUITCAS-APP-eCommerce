@@ -32,7 +32,7 @@ class RoleController extends Controller
         session()->flash('flash.banner', 'El rol se creo con exíto');
         session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('roles.edit', $role);
+        return redirect()->route('roles.index');
 
     }
     public function show(Role $role)

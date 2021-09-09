@@ -6,7 +6,7 @@
         <ul>
             @foreach ($category->subcategories as $subcategory)
                 <li>
-                    <a href="" class="text-gray-500 inline-block font-semibold py-1 px-4 hover:text-teal-700">
+                    <a href="{{route('categories.show', $category). '?subcategoria=' . $subcategory->slug}}" class="text-gray-500 inline-block font-semibold py-1 px-4 hover:text-teal-700">
                         {{ $subcategory->name }}
                     </a>
                 </li>

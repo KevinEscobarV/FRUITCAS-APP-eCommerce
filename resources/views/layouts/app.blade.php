@@ -24,9 +24,9 @@
     @livewireStyles
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script> 
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- Glider -->
     <script src={{ asset('js/glider.min.js') }}></script>
     <!-- FlexSlider -->
@@ -62,62 +62,62 @@
     <!-- Page footer -->
     @if (isset($footer))
 
-    <footer class="text-gray-600 body-font">
-        <div class="max-w-7xl container px-5 py-12 mx-auto">
-          <div class="flex flex-wrap md:text-left text-center order-first">
-            {{ $footer }}
-          </div>
-        </div>
-    </footer>
+        <footer class="text-gray-600 body-font">
+            <div class="max-w-7xl container px-5 py-12 mx-auto">
+                <div class="flex flex-wrap md:text-left text-center order-first">
+                    {{ $footer }}
+                </div>
+            </div>
+        </footer>
 
     @endif
+
+
+    <script>
+        var botmanWidget = {
+
+            title: 'ChatBot FruitCas',
+            aboutText: 'Fruitcas',
+            placeholderText: 'Envia un mensaje al Bot',
+            mainColor: '#FFCD00',
+            bubbleBackground: '#FFCD00',
+            introMessage: "✋ Hola! Estoy aqui para ayudarte"
+        };
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
 
     @stack('modals')
 
     @livewireScripts
 
-    {{-- Script Menu de navegación --}}
-<script>
-    function dropdown() {
-        return {
-            open: false,
-            show() {
-                if (this.open) {
 
+    {{-- Script Menu de navegación --}}
+    <script>
+        function dropdown() {
+            return {
+                open: false,
+                show() {
+                    if (this.open) {
+
+                        this.open = false;
+                        document.getElementsByTagName('html')[0].style.overflow = 'auto'
+
+                    } else {
+
+                        this.open = true;
+                        document.getElementsByTagName('html')[0].style.overflow = 'hidden'
+                    }
+                },
+                close() {
                     this.open = false;
                     document.getElementsByTagName('html')[0].style.overflow = 'auto'
-
-                } else {
-
-                    this.open = true;
-                    document.getElementsByTagName('html')[0].style.overflow = 'hidden'
                 }
-            },
-            close() {
-                this.open = false;
-                document.getElementsByTagName('html')[0].style.overflow = 'auto'
             }
         }
-    }
-
-</script>
-
-    
-
-    <script>
-        var botmanWidget = {
-            title: 'ChatBot FruitCas',
-            aboutText: 'Fruitcas',
-            placeholderText: 'Envia un mensaje al Bot',
-            mainColor: '#FFCD00',
-            bubbleBackground:'#FFCD00',
-            introMessage: "✋ Hola! Estoy aqui para ayudarte"
-        };
     </script>
-   
-   <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 
-   @stack('script')
+    @stack('script')
 
 </body>
 

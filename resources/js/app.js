@@ -1,6 +1,3 @@
 require('./bootstrap');
 
 require('alpinejs');
-
-
-

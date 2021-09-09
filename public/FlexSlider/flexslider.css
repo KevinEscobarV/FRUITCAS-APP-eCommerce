@@ -90,7 +90,7 @@ html[xmlns] .flexslider .slides {
   zoom: 1;
 }
 .flexslider .slides img {
-  height: auto;
+  height: 28rem;
   -moz-user-select: none;
 }
 .flex-viewport {
@@ -247,7 +247,9 @@ html[xmlns] .flexslider .slides {
 }
 .flex-control-thumbs img {
   width: 100%;
-  height: auto;
+  height: 8rem;
+  object-fit: cover;
+  object-position: center;
   display: block;
   opacity: .7;
   cursor: pointer;

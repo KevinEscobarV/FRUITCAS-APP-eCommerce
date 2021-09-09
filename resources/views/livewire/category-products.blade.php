@@ -5,10 +5,10 @@
     <div class="glider-contain">
         <ul class="glider-{{$category->id}}">
             @foreach ($products as $product)
-                <li class="bg-white rounded-xl shadow-lg mb-5 mr-2 ml-2 {{ $loop->last ? '' : 'sm:mr-4' }}">
+                <li class="bg-white rounded-lg shadow-lg mb-5 mr-2 ml-2 {{ $loop->last ? '' : 'sm:mr-4' }}">
                     <article>
                         <figure>
-                            <img class="rounded-t-xl h-50 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                            <img class="rounded-t-lg h-50 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
                         </figure>
                         <div class="py-4 px-8">
                             <a href="{{route('products.show', $product)}}">

@@ -80,13 +80,13 @@
                     </div>
 
 
-                    {{-- Distritos --}}
+                    {{-- Zona o Barrio --}}
                     <div>
-                        <x-jet-label value="Distrito" />
+                        <x-jet-label value="Zona o Barrio" />
 
                         <select class="w-full rounded-md" wire:model="district_id">
 
-                            <option value="" disabled selected>Seleccione un Distrito / Barrio</option>
+                            <option value="" disabled selected>Seleccione una Zona / Barrio</option>
 
                             @foreach ($districts as $district)
                                 <option value="{{$district->id}}">{{$district->name}}</option>

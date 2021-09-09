@@ -1,4 +1,4 @@
-<header class="bg-gradient-to-r from-teal-500 to-orange-400 shadow-lg sticky top-0 z-40" x-data="dropdown()">
+<header class="bg-gradient-to-r from-teal-500 to-indigo-300 shadow-md sticky top-0 z-40" x-data="dropdown()">
 
     <div class="max-w-full mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center h-16 justify-between md:justify-start">
         <a :class="{'text-teal-900' : open}" x-on:click="show()"

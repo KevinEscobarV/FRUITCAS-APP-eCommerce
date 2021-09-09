@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('subcategories');
         Storage::makeDirectory('products');
 
+        $this->call(RoleSeeder::class);
 
         $this->call(UserSeeder::class);
 
-        $this->call(RoleSeeder::class);
 
         $this->call(CategorySeeder::class);
         $this->call(SubcategorySeeder::class);

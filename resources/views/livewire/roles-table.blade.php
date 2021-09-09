@@ -9,21 +9,19 @@
                 </path>
             </svg>
             <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Administración de Roles</div>
+
+            @can('roles.create')
+                <x-button-enlace color="teal" class="ml-auto" href="{{ route('roles.create') }}">
+                    Crear Rol
+                </x-button-enlace>
+            @endcan
+
         </div>
 
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <div class="text-right">
-                <a href="{{ route('roles.create') }}" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md
-                    text-white bg-green-600 hover:bg-green-700 transition duration-150 ease-in-out">
-                    Crear Rol
-                </a>
-            </div>
-
-            <br>
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
@@ -64,14 +62,18 @@
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Nombre
                                             </th>
-                                            <th scope="col"
-                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Editar
-                                            </th>
-                                            <th scope="col"
-                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Eliminar
-                                            </th>
+                                            @can('roles.edit')
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Editar
+                                                </th>
+                                            @endcan
+                                            @can('roles.destroy')
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Eliminar
+                                                </th>
+                                            @endcan
 
                                         </tr>
                                     </thead>
@@ -91,26 +93,29 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                    <a href="{{ route('roles.edit', $role) }}"
-                                                        class="inline-flex items-center px-4 py-2 border border-gray-300
-                                                        rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white
-                                                        hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2
-                                                        focus:ring-indigo-500 transition duration-150 ease-in-out">Editar</a>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                                @can('roles.edit')
+                                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                                        <a href="{{ route('roles.edit', $role) }}"
+                                                            class="inline-flex items-center px-4 py-2 border border-gray-300
+                                                            rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white
+                                                            hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+                                                            focus:ring-indigo-500 transition duration-150 ease-in-out">Editar</a>
+                                                    </td>
+                                                @endcan
+                                                @can('roles.destroy')
+                                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
 
+                                                        <form action={{ route('roles.destroy', $role) }} method="POST">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <button type="submit"
+                                                                class="flex mx-auto text-white bg-red-400 border-0 py-2 px-8
+                                                                focus:outline-none hover:bg-red-500 rounded transition duration-150 ease-in-out">
+                                                                Eliminar </button>
+                                                        </form>
 
-
-                                                    <form action={{ route('roles.destroy', $role) }} method="POST">
-                                                        @csrf
-                                                        @method("DELETE")
-                                                        <button type="submit"
-                                                            class="flex mx-auto text-white bg-red-400 border-0 py-2 px-8
-                                                            focus:outline-none hover:bg-red-500 rounded transition duration-150 ease-in-out">
-                                                            Eliminar </button>
-                                                    </form>
-                                                </td>
+                                                    </td>
+                                                @endcan
                                             </tr>
                                         @endforeach
 

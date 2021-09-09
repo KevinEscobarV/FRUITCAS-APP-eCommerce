@@ -8,6 +8,7 @@ use App\Models\Order;
 
 class WelcomeController extends Controller
 {
+
     public function __invoke()
     {
 
