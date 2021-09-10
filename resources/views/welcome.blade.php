@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class=" bg-contain bg-no-repeat" style="background-image:url('/img/fondo2-t.png');">
+    <div class=" bg-contain bg-no-repeat" style="background-image:url('/img/fondo25-t.png');">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             @foreach ($categories as $category)
 
