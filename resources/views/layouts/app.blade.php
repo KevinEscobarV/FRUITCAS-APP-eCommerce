@@ -75,7 +75,7 @@
 
     <script>
         var botmanWidget = {
-
+            headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
             title: 'ChatBot FruitCas',
             aboutText: 'Fruitcas',
             placeholderText: 'Envia un mensaje al Bot',
