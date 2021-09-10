@@ -75,13 +75,7 @@
     <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     <script>
         var botmanWidget = {
-<<<<<<< HEAD
             headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
-=======
-            headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                },
->>>>>>> 3ae980c900259b62827ff7c0fa40eb4fd70677c8
             title: 'ChatBot FruitCas',
             aboutText: 'Fruitcas',
             placeholderText: 'Envia un mensaje al Bot',
