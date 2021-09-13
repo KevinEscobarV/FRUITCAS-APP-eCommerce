@@ -75,14 +75,12 @@
     
     <script>
         var botmanWidget = {
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             title: 'ChatBot FruitCas',
             aboutText: 'Fruitcas',
             placeholderText: 'Saluda o enviale un mensaje al Bot',
             mainColor: '#FFCD00',
             bubbleBackground: '#FFCD00',
             introMessage: "✋ Hola! Estoy aqui para ayudarte",
-            desktopWidth: "200"
         };
     </script>
     <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> 
