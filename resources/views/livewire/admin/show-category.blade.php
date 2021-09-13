@@ -9,7 +9,6 @@
         <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Administración de Subcategorias de
             {{ $category->name }}
         </div>
-
     </div>
 </x-slot>
 

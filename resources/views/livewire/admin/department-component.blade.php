@@ -8,6 +8,9 @@
         </svg>
         <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Administración de Departamentos
         </div>
+        <x-button-enlace color="orange" class="ml-auto" target="blank" href="{{ route('admin.ubicaciones.pdf') }}">
+            Generar Reporte de Ubicaciones
+          </x-button-enlace>
     </div>
 </x-slot>
 

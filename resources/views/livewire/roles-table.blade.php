@@ -9,13 +9,14 @@
                 </path>
             </svg>
             <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Administración de Roles</div>
-
+            <x-button-enlace color="orange" class="ml-auto" target="blank" href="{{ route('admin.rolespdf.pdf') }}">
+                Generar Reporte de Roles
+              </x-button-enlace>
             @can('roles.create')
-                <x-button-enlace color="teal" class="ml-auto" href="{{ route('roles.create') }}">
+                <x-button-enlace color="teal" class="ml-2" href="{{ route('roles.create') }}">
                     Crear Rol
                 </x-button-enlace>
             @endcan
-
         </div>
 
     </x-slot>

@@ -15,11 +15,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Glider -->
-    <link rel="stylesheet" href="{{ secure_asset('css/glider.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/glider.min.css') }}">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="{{ secure_asset('FontAwesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FontAwesome/css/all.min.css') }}">
     <!-- FlexSlider -->
-    <link rel="stylesheet" href="{{ secure_asset('FlexSlider/flexslider.css') }}">
+    <link rel="stylesheet" href="{{ asset('FlexSlider/flexslider.css') }}">
 
     @livewireStyles
 
@@ -28,9 +28,9 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- Glider -->
-    <script src={{ secure_asset('js/glider.min.js') }}></script>
+    <script src={{ asset('js/glider.min.js') }}></script>
     <!-- FlexSlider -->
-    <script src={{ secure_asset('FlexSlider/jquery.flexslider-min.js') }}></script>
+    <script src={{ asset('FlexSlider/jquery.flexslider-min.js') }}></script>
 
 </head>
 
@@ -78,10 +78,11 @@
             headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
             title: 'ChatBot FruitCas',
             aboutText: 'Fruitcas',
-            placeholderText: 'Envia un mensaje al Bot',
+            placeholderText: 'Saluda o enviale un mensaje al Bot',
             mainColor: '#FFCD00',
             bubbleBackground: '#FFCD00',
-            introMessage: "✋ Hola! Estoy aqui para ayudarte"
+            introMessage: "✋ Hola! Estoy aqui para ayudarte",
+            desktopWidth: "200"
         };
     </script>
     

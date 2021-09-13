@@ -8,7 +8,9 @@
             </svg>
             <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Administración de Categorias
             </div>
-
+            <x-button-enlace color="orange" class="ml-auto" target="blank" href="{{ route('admin.categories.pdf') }}">
+                Generar Reporte de Categorias
+              </x-button-enlace>
         </div>
     </x-slot>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">

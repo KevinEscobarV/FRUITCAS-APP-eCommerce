@@ -21,18 +21,18 @@
     
 
     <nav id="navigation-menu" :class="{'block': open, 'hidden': !open} "
-        class="transition duration-150 bg-gray-700 bg-opacity-25 w-full absolute hidden">
+        class="bg-gray-700 bg-opacity-25 w-full absolute hidden">
 
         {{-- Menu Computadora --}}
 
         <div class="max-w-7xl h-full relative hidden md:block">
             <div x-on:click.away="close()" class="grid grid-cols-4 h-full">
-                <ul class="bg-white">
+                <ul class="bg-gray-500 bg-opacity-60">
 
                     @foreach ($categories as $category)
                         <li
-                            class="navigation-link hover:bg-teal-500 hover:text-white focus:outline-none transition duration-150">
-                            <a href="{{route('categories.show', $category)}}" class="py-4 px-4 text-sm flex items-center">
+                            class="navigation-link hover:bg-teal-500 hover:text-white">
+                            <a href="{{route('categories.show', $category)}}" class="py-4 px-4 text-sm flex items-center uppercase text-white italic">
 
                                 <span class="flex justify-center w-9">
                                 {!!$category->icon!!}

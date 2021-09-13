@@ -15,33 +15,33 @@ class OnboardingConversation extends Conversation
 
     public function askName()
     {
-        $this->ask('Hi! What is your name?', function(Answer $answer) {
+        $this->ask('Hola! Cual es tu nombre?', function(Answer $answer) {
             // Save result
             $this->name = $answer->getText();
 
-            $this->say('Nice to meet you '.$this->name);
+            $this->say('Un placer conocerte '.$this->name);
             $this->askEmail();
         });
     }
 
     public function askEmail()
     {
-        $this->ask('One more thing - what is your email address?', function(Answer $answer) {
+        $this->ask('Una cosa más, ¿cuál es su dirección de correo electrónico?', function(Answer $answer) {
             // Save result
             $this->email = $answer->getText();
 
-            $this->say('Great - that is all we need, '.$this->name);
+            $this->say('Genial, eso es todo lo que necesitamos, '.$this->name);
             $this->askHelp();
         });
     }
 
     public function askHelp()
     {
-        $this->ask('How can I help you?', function(Answer $answer) {
+        $this->ask('¿Te puedo ayudar en algo?', function(Answer $answer) {
             // Save result
             $this->query = $answer->getText();
 
-            $this->say('Your query has been forwarded, we will contact you soon.');
+            $this->say('Tu consulta ha sido enviada, pronto nos contactaremos contigo.');
         });
     }
 

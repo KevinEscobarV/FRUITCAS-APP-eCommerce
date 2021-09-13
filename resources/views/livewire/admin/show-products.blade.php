@@ -3,16 +3,20 @@
         <div class="flex items-center">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-                <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
-                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
             </svg>
-            <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Panel de Administración y Gestión de Productos
+            <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold uppercase">Panel de Administración y Gestión de Productos
             </div>
 
             @can('products.create')
-                <x-button-enlace color="teal" class="ml-auto" href="{{ route('admin.products.create') }}">
+            <x-button-enlace color="orange" class="ml-auto" target="blank" href="{{ route('admin.products.pdf') }}">
+              Generar Reporte de Productos
+            </x-button-enlace>
+                <x-button-enlace color="teal" class="ml-2" href="{{ route('admin.products.create') }}">
                     Agregar Producto
                 </x-button-enlace>
+                
             @endcan
 
         </div>
@@ -180,6 +184,10 @@
   
       </div>
 
+      <div class="max-h-full p-5 overflow-hidden bg-white rounded-md shadow-md mx-8 mt-6">
+        
+      </div>
+
       <div class="py-6">
         <div class="w-full mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -308,9 +316,7 @@
 
 </div>
 
-@push('script')
-
-<script src={{ secure_asset('js/script.js') }}></script>    
+@push('script')    
 
 <script>
     const setup = () => {
@@ -324,5 +330,23 @@
         isSearchBoxOpen: false,
       }
     }
+
+    var nombres=[];
+    var valores=[];
+
+    $.ajax({
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      url: 'admin/chart',
+      method: 'POST',
+    }).done(function(respuesta){
+
+        var arreglo = JSON.parse(respuesta);
+
+        for (let x = 0; x < arreglo.length; x++) {
+          nombres.push(arreglo[x].name);
+          valores.push(arreglo[x].quantity);
+        }
+        generarGraficaBig();
+    })
   </script>
 @endpush

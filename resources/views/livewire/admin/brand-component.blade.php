@@ -8,7 +8,9 @@
         </svg>
         <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Administración de Marcas
         </div>
-
+        <x-button-enlace color="orange" class="ml-auto" target="blank" href="{{ route('admin.brands.pdf') }}">
+            Generar Reporte de Marcas
+          </x-button-enlace>
     </div>
 </x-slot>
 

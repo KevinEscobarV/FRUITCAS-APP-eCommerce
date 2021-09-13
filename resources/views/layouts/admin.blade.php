@@ -15,7 +15,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="{{ secure_asset('FontAwesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FontAwesome/css/all.min.css') }}">
     {{-- Dropzone --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
     {{-- chart --}}
@@ -30,7 +30,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- CKEDITOR -->
-    <script src={{ secure_asset('js/ckeditor.js') }}></script>
+    <script src={{ asset('js/ckeditor.js') }}></script>
     {{-- sweetalert2 --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- Dropzone --}}
@@ -72,6 +72,7 @@
 
     @stack('script')
 
+    
     <script>
         Livewire.on('errorSize', mensaje => {
             Swal.fire({
@@ -83,7 +84,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
-
+    <script src={{ asset('js/chartscript.js') }}></script>
 
 
 </body>

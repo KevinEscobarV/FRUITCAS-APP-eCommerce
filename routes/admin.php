@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChartsController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\PDFController;
 use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\CityComponent;
 use App\Http\Livewire\Admin\ShowCategory;
@@ -43,3 +44,21 @@ Route::get('cities/{city}', CityComponent::class)->name('admin.cities.show');
 Route::post('/chart', [ShowProducts::class, 'chart']);
 
 Route::post('/chartUser', [ChartsController::class, 'chartUser']);
+
+Route::post('/orders/chartVentas', [ChartsController::class, 'chartVentas']);
+
+// REPORTES PDF
+
+Route::get('products/pdf', [PDFController::class, 'pdfProducts'])->name('admin.products.pdf');
+
+Route::get('categorias/pdf', [PDFController::class, 'pdfCategories'])->name('admin.categories.pdf');
+
+Route::get('terceros/pdf', [PDFController::class, 'pdfBrands'])->name('admin.brands.pdf');
+
+Route::get('ubicaciones/pdf', [PDFController::class, 'pdflocations'])->name('admin.ubicaciones.pdf');
+
+Route::get('usuarios/pdf', [PDFController::class, 'pdfUsers'])->name('admin.usuarios.pdf');
+
+Route::get('rolespdf/pdf', [PDFController::class, 'pdfRoles'])->name('admin.rolespdf.pdf');
+
+Route::get('ordenes/pdf', [PDFController::class, 'pdfOrders'])->name('admin.ordenes.pdf');
