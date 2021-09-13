@@ -172,7 +172,7 @@
 
       </div>  
 
-      <div class="flex-1 max-h-full p-5 overflow-hidden bg-white rounded-md shadow-md mx-8 mt-6">
+      {{-- <div class="flex-1 max-h-full p-5 overflow-hidden bg-white rounded-md shadow-md mx-8 mt-6">
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div class="border rounded-lg shadow-sm xl:col-span-2">
             <canvas id="myChart" width="400" height="400"></canvas>
@@ -182,11 +182,8 @@
           </div>
         </div>
   
-      </div>
+      </div> --}}
 
-      <div class="max-h-full p-5 overflow-hidden bg-white rounded-md shadow-md mx-8 mt-6">
-        
-      </div>
 
       <div class="py-6">
         <div class="w-full mx-auto sm:px-6 lg:px-8">
