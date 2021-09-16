@@ -180,7 +180,7 @@
     <script>
         var cantVentas;
         $.ajax({
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
         url: 'orders/chartVentas',
         method: 'POST',
         }).done(function(resVentas){     
