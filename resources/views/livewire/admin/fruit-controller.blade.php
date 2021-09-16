@@ -231,7 +231,7 @@
             var cantFruits=[];
 
             $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
             url: 'fruits/chartFruits',
             method: 'POST',
             }).done(function(resFruits){     
