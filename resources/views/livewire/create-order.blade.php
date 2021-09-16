@@ -125,7 +125,9 @@
 
             <hr>
 
-            <p class="text-sm text-gray-700 mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam atque quo, labore facere placeat illo consequatur hic ut sapiente exercitationem, architecto iure, consequuntur impedit ex iusto ipsa voluptas laudantium iste <a href="" class="font-semibold text-orange-500">Políticas y privacidad</a></p>
+            <p class="text-sm text-gray-700 mt-2">A continuación se generara una orden de productos en su cuenta con la que podrá llevar seguimiento de esta cuando lo desee, tendrá diferentes medios con los que podrá realizar el pago.
+                {{-- <a href="" class="font-semibold text-orange-500">Políticas y privacidad</a> --}}
+            </p>
         </div>
 
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Fruit;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
@@ -28,13 +29,12 @@ class ShowProducts extends Component
     public function chart(Request $request)
     {
 
-        $products = Product::where('status', 2)
-                            ->take(10)
-                            ->get();
+        $order = Order::where('status', '<>', 1)->take(20)->get();
 
         return 
-        response(json_encode($products,), 200)->header('Content-type', 'text/plain');
+        response(json_encode($order), 200)->header('Content-type', 'text/plain');
     }
+
 
     public function updatingSearch()
     {
@@ -49,14 +49,20 @@ class ShowProducts extends Component
 
         $users = User::count();
 
+        $fruits = Fruit::count();
+
         $productspublic = Product::where('status', 2)->count();
 
         $productsdraft = Product::where('status', 1)->count();
+
+        $vent = Order::where('status', '<>', 1)->count();
 
         $orders = Order::where('status', 4)->count();
 
         $products = Product::where('name', 'like', '%' . $this->search . '%')->paginate(10);
 
-        return view('livewire.admin.show-products', compact('products', 'users', 'orders', 'productspublic', 'productsdraft', 'vistas', 'activos'))->layout('layouts.admin');
+        return view('livewire.admin.show-products', 
+        compact('products', 'users', 'orders', 'productspublic', 'productsdraft', 'vistas', 'activos', 'fruits', 'vent'))
+        ->layout('layouts.admin');
     }
 }

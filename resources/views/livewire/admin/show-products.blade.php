@@ -117,10 +117,7 @@
                           <div class="flex flex-col flex-shrink-0 space-y-2">
                             <span class="text-gray-400">Usuarios en Linea</span>
                             <span class="text-lg font-semibold">{{$activos}}</span>
-                          </div>
-                          <div class="relative min-w-0 ml-auto h-14"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                            <canvas id="usersChart" width="273" height="56" style="display: block; width: 273px; height: 56px;" class="chartjs-render-monitor"></canvas>
-                          </div>
+                          </div>                 
                         </div>
                         <div>
                           <span class="inline-block px-2 text-sm text-white bg-green-400 rounded">Activos</span>
@@ -128,7 +125,24 @@
                         </div>
                     </div>
 
-                      <div class="p-4 mb-6 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                    <a href="{{route('admin.fruits.index')}}">
+                      <div class="p-4 mb-6 transition-shadow border rounded-lg shadow-sm hover:shadow-lg bg-gradient-to-r from-teal-300 to-orange-200">
+                        <div class="flex items-start">
+                          <div class="flex flex-col flex-shrink-0 space-y-2">
+                            <span class="text-gray-500">Materia Prima</span>
+                            <span class="text-lg font-semibold">{{$fruits}}</span>
+                          </div>
+                          <div class="relative min-w-0 ml-auto h-14"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas id="usersChart" width="273" height="56" style="display: block; width: 273px; height: 56px;" class="chartjs-render-monitor"></canvas>
+                          </div>
+                        </div>
+                        <div>
+                          <span class="inline-block px-2 text-sm text-white bg-green-400 rounded">Cantidad de Productos de Entrada</span>                      
+                        </div>
+                    </div>
+                    </a>
+
+                      <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
                         <!-- Card header -->
                         <div class="flex items-center justify-between px-4 py-2 border-b">
                           <h5 class="font-semibold">Datos Importantes</h5>
@@ -136,7 +150,7 @@
                         </div>
                         <p class="px-4 py-6 text-gray-600">Aqui tendras un control total del manejo de los productos que ofrece la 
                           empresa Fruitcas.</p>
-                        <p class="px-4 py-6 text-gray-600">Recuerda subir almenos 4 imagenes por producto, es importante detallar muy bien lo que se quiere vender.</p>
+                        <p class="px-4 pb-6 text-gray-600">Recuerda subir almenos 4 imagenes por producto, es importante detallar muy bien lo que se quiere vender.</p>
                             
                       </div>
 
@@ -153,19 +167,19 @@
                   </div>
                   <!-- Card content -->
                   <div class="flex items-center p-4 space-x-4">
-                    <span class="text-3xl font-medium">45%</span>
+                   
                     <span class="flex items-center px-2 space-x-2 text-sm text-green-800 bg-green-100 rounded">
                       <span>
                         <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                           <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path>
                         </svg>
                       </span>
-                      <span>39.2%</span>
+                      <span>{{$vent * 0.30}}%</span>
                     </span>
                   </div>
                   <!-- Chart -->
-                  <div class="relative min-w-0 p-4 h-80"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="updatingMonthlyChart" width="1297" height="288" style="display: block; width: 1297px; height: 288px;" class="chartjs-render-monitor"></canvas>
+                  <div class=" px-6">
+                  <canvas id="updatingMonthlyChart" width="400" height="140"></canvas>
                   </div>
                 </div>
         </div>
@@ -328,7 +342,7 @@
       }
     }
 
-    var nombres=[];
+    var idorder=[];
     var valores=[];
 
     $.ajax({
@@ -340,9 +354,10 @@
         var arreglo = JSON.parse(respuesta);
 
         for (let x = 0; x < arreglo.length; x++) {
-          nombres.push(arreglo[x].name);
-          valores.push(arreglo[x].quantity);
+          idorder.push(arreglo[x].id);
+          valores.push(arreglo[x].total);
         }
+
         generarGraficaBig();
     })
   </script>

@@ -10,4 +10,5 @@
 
     </div>
 
+    <livewire:navigation-footer></livewire:navigation-footer>
 </x-app-layout>

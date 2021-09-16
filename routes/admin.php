@@ -13,6 +13,7 @@ use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\CityComponent;
 use App\Http\Livewire\Admin\ShowCategory;
 use App\Http\Livewire\Admin\DepartmentComponent;
+use App\Http\Livewire\Admin\FruitController;
 use App\Http\Livewire\Admin\ShowDepartment;
 
 Route::get('/', ShowProducts::class)->name('admin.index');
@@ -39,6 +40,8 @@ Route::get('departments/{department}', ShowDepartment::class)->name('admin.depar
 
 Route::get('cities/{city}', CityComponent::class)->name('admin.cities.show');
 
+Route::get('fruits', FruitController::class)->name('admin.fruits.index');
+
 // GRAFICAS
 
 Route::post('/chart', [ShowProducts::class, 'chart']);
@@ -46,6 +49,8 @@ Route::post('/chart', [ShowProducts::class, 'chart']);
 Route::post('/chartUser', [ChartsController::class, 'chartUser']);
 
 Route::post('/orders/chartVentas', [ChartsController::class, 'chartVentas']);
+
+Route::post('/fruits/chartFruits', [ChartsController::class, 'chartFruits']);
 
 // REPORTES PDF
 
@@ -62,3 +67,5 @@ Route::get('usuarios/pdf', [PDFController::class, 'pdfUsers'])->name('admin.usua
 Route::get('rolespdf/pdf', [PDFController::class, 'pdfRoles'])->name('admin.rolespdf.pdf');
 
 Route::get('ordenes/pdf', [PDFController::class, 'pdfOrders'])->name('admin.ordenes.pdf');
+
+Route::get('materia/pdf', [PDFController::class, 'pafMateria'])->name('admin.materia.pdf');

@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ secure_url('login') }}">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div>
@@ -33,11 +33,11 @@
             </div>
             <div class="flex items-center justify-between py-5 my-5 border-t border-b border-gray-200">
                 @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-500 hover:text-gray-900" href="{{ secure_url('password.request') }}">
+                <a class="underline text-sm text-gray-500 hover:text-gray-900" href="{{ route('password.request') }}">
                     {{ __('¿Olvidaste tu contraseña?') }}
                 </a>
             @endif
-                <a class="underline text-sm text-gray-500 hover:text-gray-900" href="{{ secure_url('register') }}">
+                <a class="underline text-sm text-gray-500 hover:text-gray-900" href="{{ route('register') }}">
                     {{ __('¿No estás registrado?') }}
                 </a>
             </div>

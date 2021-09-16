@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fruit;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,6 +16,14 @@ class ChartsController extends Controller
 
         return 
         response(json_encode($users), 200)->header('Content-type', 'text/plain');
+    }
+
+    public function chartFruits(Request $request)
+    {
+        $fruits = Fruit::all();
+
+        return 
+        response(json_encode($fruits), 200)->header('Content-type', 'text/plain');
     }
 
     public function chartVentas(Request $request)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\City;
 use App\Models\Department;
+use App\Models\Fruit;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Subcategory;
@@ -109,6 +110,19 @@ class PDFController extends Controller
         $datos = compact('orders', 'fecha');
 
         $pdf = PDF::loadView('pdf.ordenes', $datos);
+        return $pdf->stream();
+        
+    }
+ 
+    public function pafMateria()
+    {
+        $fruits = Fruit::all();
+        
+        $fecha = Carbon::now()->format("F j, Y, g:i a");
+        
+        $datos = compact('fruits', 'fecha');
+
+        $pdf = PDF::loadView('pdf.materia', $datos);
         return $pdf->stream();
         
     }

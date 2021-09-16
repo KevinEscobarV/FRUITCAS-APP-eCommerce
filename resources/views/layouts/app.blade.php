@@ -63,7 +63,7 @@
     @if (isset($footer))
 
         <footer class="text-gray-600 body-font">
-            <div class="max-w-7xl container px-5 py-12 mx-auto">
+            <div class="max-w-7xl container px-5 py-9 mx-auto">
                 <div class="flex flex-wrap md:text-left text-center order-first">
                     {{ $footer }}
                 </div>
