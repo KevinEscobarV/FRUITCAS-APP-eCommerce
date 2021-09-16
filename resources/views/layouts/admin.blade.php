@@ -84,7 +84,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
-    <script src={{ asset('js/chartscript.js') }}></script>
+    <script src={{ secure_asset('js/chartscript.js') }}></script>
 
 
 </body>
