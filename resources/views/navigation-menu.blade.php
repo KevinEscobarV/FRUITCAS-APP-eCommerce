@@ -138,10 +138,10 @@
                                 <div class="border-t border-gray-100"></div>
 
                                 <!-- Authentication -->
-                                <form method="POST" action="{{ secure_url('logout') }}">
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
-                                    <x-jet-dropdown-link href="{{ secure_url('logout') }}" onclick="event.preventDefault();
+                                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                 this.closest('form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </x-jet-dropdown-link>
