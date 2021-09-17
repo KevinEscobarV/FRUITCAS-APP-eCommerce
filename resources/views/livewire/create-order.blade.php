@@ -1,8 +1,8 @@
 <div class=" bg-piña bg-cover bg-fixed min-h-screen">
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-8 grid grid-cols-5 gap-6">
-    <div class="col-span-3">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-8 grid lg:grid-cols-2 xl:grid-cols-5 gap-6">
+    <div class="order-2 lg:order-1 lg:col-span-1 xl:col-span-3">
 
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-md shadow p-6">
             <div class="mb-4">
                 <x-jet-label value="Nombre de contácto" />
                 <x-jet-input type="text"
@@ -25,7 +25,7 @@
         <div x-data="{ envio_type: @entangle('envio_type') }">
             <p class="mt-6 mb-3 text-lg text-gray-700 font-semibold">Envíos</p>
 
-            <label class="bg-white rounded-lg shadow px-6 py-4 flex items-center mb-4 cursor-pointer">
+            <label class="bg-white rounded-md shadow px-6 py-4 flex items-center mb-4 cursor-pointer">
                 <input x-model="envio_type" type="radio" value="1" name="envio_type" class="text-gray-600">
                 <span class="ml-2 text-gray-700">
                     Recojo en tienda FruitCas Tauramena Casanare
@@ -36,7 +36,7 @@
                 </span>
             </label>
 
-            <div class="bg-white rounded-lg shadow">
+            <div class="bg-white rounded-md shadow">
                 <label class="px-6 py-4 flex items-center cursor-pointer">
                     <input x-model="envio_type"  type="radio" value="2" name="envio_type" class="text-gray-600">
                     <span class="ml-2 text-gray-700">
@@ -132,8 +132,8 @@
 
     </div>
 
-    <div class="col-span-2">
-        <div class="bg-white rounded-lg shadow p-6">
+    <div class="order-1 lg:order-2 lg:col-span-1 xl:col-span-2">
+        <div class="bg-white rounded-md shadow p-6">
             <ul>
                 @forelse (Cart::content() as $item)
                     <li class="flex p-2 border-t border-gray-200">

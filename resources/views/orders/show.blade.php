@@ -40,11 +40,34 @@
 
         </div>
 
+        @if ($order->efectivo <> NULL)
+        <a href="{{$efectivo->transaction_details->external_resource_url}}" target="blank">
+            <div class="bg-gradient-to-r from-gray-50 to-indigo-200 rounded-lg shadow-lg py-4 mb-6 flex justify-center items-center transform transition hover:scale-110 duration-300">
+                <div class="px-6">
+                    <h3 class=" text-lg text-center">Solo te falta pagar $ {{number_format(($efectivo->transaction_details->total_paid_amount), 0, '', '.')}} para completar tu compra</h3>
+                    <h3 class="text-gray-700 text-center">Convenio</h3>
+                    <p class="font-semibold text-center uppercase text-gray-700">{{$efectivo->payment_method_id}}</p>
+                </div>
+                <div class="px-6">
+                    <h3 class="text-gray-700 text-center">Convenio No.</h3>
+                    <p class="bg-gray-100 shadow-sm rounded-md font-semibold text-center uppercase text-gray-700">{{$efectivo->payment_method_id}}</p>
 
-
+                    <h3 class="text-gray-700 text-center">Referencia</h3>
+                    <p class="bg-gray-100 shadow-sm rounded-md font-semibold text-center uppercase text-gray-700">{{$efectivo->id}}</p>
+                    
+                    <p class="text-center">Tienes hasta el {{$efectivo->date_of_expiration}} para hacerlo.</p>
+                
+                </div>
+            </div>
+        </a>
+        @endif
+        
+        
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center">
             <p class="text-gray-700 uppercase"><span class="font-semibold">Número de orden:</span>
                 Orden-{{ $order->id }}</p>
+
+               
 
             @if ($order->status == 1)
             

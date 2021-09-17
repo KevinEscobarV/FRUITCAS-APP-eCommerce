@@ -17,7 +17,7 @@
             <table class="table-auto w-full">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Producto</th>
                         <th>Precio</th>
                         <th>Cant</th>
                         <th>Total</th>
@@ -31,7 +31,7 @@
 
                         <tr>
                             <td>
-                                <div class="flex mt-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-2 items-center">
                                     <img class="h-15 w-20 object-cover rounded-md shadow-lg mr-4" src="{{ $item->options->image }}" alt="">
                                     <div>
                                         <p class="font-bold">{{ $item->name }}</p>

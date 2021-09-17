@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div style="background-image:url('/img/fondo-p.jpg');" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 rounded-lg shadow-md my-8">
-        <div class="grid grid-cols-2 gap-6">
+    <div style="background-image:url('/img/fondo-p.jpg');" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 rounded-lg shadow-md my-8 bg-cover">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 
             <div>
                 <div class="flexslider shadow-md ring ring-gray-300 ring-offset-4">
@@ -21,10 +21,9 @@
             <div>
                 <h2 class="text-sm title-font text-gray-500 tracking-widest uppercase">{{ $product->brand->name }}</h2>
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 capitalize">{{ $product->name }}</h1>
-                {{-- <h1 class="text-3xl font-bold text-gray-700 mb-4">{{ $product->name }}</h1> --}}
+                
                 <div class="flex">
-                    {{-- <p class="text-gray-700">Marca: <a class="underline capitalize hover:text-orange-500"
-                            href="">{{ $product->brand->name }}</a></p> --}}
+                   
                     <p class="text-gray-700 mr-6"> 
                         <i class="fas fa-star text-sm text-yellow-500"></i>
                         <i class="fas fa-star text-sm text-yellow-500"></i>
@@ -50,7 +49,9 @@
                 </div>
 
                 <div class=" my-4">
-                    <p class="text-lg title-font text-gray-500 tracking-widest">{{ $product->description }}</p>
+                    <div class="text-lg title-font text-gray-600 tracking-widest">
+                        {!! $product->description !!}
+                    </div>
                 </div>
 
                 @if ($product->subcategory->size)

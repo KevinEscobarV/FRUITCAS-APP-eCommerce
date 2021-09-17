@@ -44,11 +44,33 @@
 
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
+
+        <div class="bg-gradient-to-r from-gray-50 to-indigo-200 rounded-md shadow-md px-6 py-4 mb-6">
+            <div class=" lg:flex items-center lg:justify-between">
+                <img class="max-h-32" src="{{ asset('img/mercado_pago_1.png') }}" alt="">
+                <div class="tracking-widest mt-6 text-gray-700 mr-6">
+
+                    <p class="text-sm font-semibold text-right">
+                        Subtotal: COP $ {{number_format(($order->total - $order->shipping_cost), 0, '', '.')}}
+                    </p>
+                    <p class="text-sm font-semibold text-right">
+                        Envío: COP $  {{number_format(($order->shipping_cost), 0, '', '.')}}
+                    </p>
+                    <p class="text-lg font-semibold uppercase mb-2 text-right">
+                        Total: COP $ {{number_format(($order->total), 0, '', '.')}}
+                    </p>    
+
+                </div>
+            </div>
+            <div class="cho-container lg:text-right mr-6 mb-4 md:text-left">
+            </div>
+        </div>
+
+        <div class="bg-white rounded-md shadow-md px-6 py-4 mb-6">
             <p class="text-gray-700 uppercase"><span class="font-semibold">Número de orden:</span> Orden-{{$order->id}}</p>
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
+        <div class="bg-white rounded-md shadow-md px-6 py-4 mb-6">
             <div class="grid grid-cols-2 gap-6 text-gray-700">
                 <div>
                     <p class=" text-lg font-semibold uppercase">Envío</p>
@@ -71,7 +93,7 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 text-gray-700 mb-6">
+        <div class="bg-white rounded-md shadow-md px-6 py-4 text-gray-700 mb-6">
             <p class="text-xl font-semibold mb-4">Resumen</p>
 
             <table class="table-auto w-full">
@@ -125,56 +147,7 @@
 
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 flex justify-between items-center">
-            <img class="max-h-32" src="{{ asset('img/mercado_pago_1.jpg') }}" alt="">
-            <div class="text-gray-700">
-
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p class="text-sm font-semibold text-right mr-5">
-                                    Subtotal: COP $ 
-                                </p>
-                            </td>
-                            <td>
-                                <p class="text-right">
-                                    {{number_format(($order->total - $order->shipping_cost), 0, '', '.')}}
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p class="text-sm font-semibold text-right mr-5">
-                                    Envío: COP $ 
-                                </p>
-                            </td>
-                            <td>
-                                <p class="text-right">
-                                    {{number_format(($order->shipping_cost), 0, '', '.')}}
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p class="text-lg font-semibold uppercase mb-2 text-right mr-5">
-                                    Total: COP $ 
-                                </p>
-                            </td>
-                            <td>
-                                <p class="text-lg font-semibold uppercase mb-2 text-right">
-                                    {{number_format(($order->total), 0, '', '.')}}
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="cho-container text-right">
-                </div>
-
-            </div>
-        </div>
+        
 
 
     </div>

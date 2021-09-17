@@ -37,7 +37,11 @@ class OrderController extends Controller
         $items = json_decode($order->content);
         $envio = json_decode($order->envio);
 
-        return view('orders.show', compact('order', 'items', 'envio'));
+        $efectivo = json_decode($order->efectivo);
+
+       
+
+        return view('orders.show', compact('order', 'items', 'envio', 'efectivo'));
     }
 
 
@@ -49,6 +53,8 @@ class OrderController extends Controller
         $items = json_decode($order->content);
         $envio = json_decode($order->envio);
 
+       
+
         return view('orders.payment', compact('order', 'items', 'envio'));
     }
 
@@ -57,17 +63,20 @@ class OrderController extends Controller
         $payment_id = $request->get('payment_id');
 
         $response = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-2921571520296494-052409-d27092cd358fc3d046b47e83988f8304-472718708");
-
+        
         $response = json_decode($response);
+
+        $order->efectivo = json_encode($response);
 
         $status = $response->status;
 
         if ($status == 'approved') {
            $order->status = 2;
-           $order->save();
         }
 
-        return redirect()->route('orders.show', $order);
+        $order->save();
+
+        return redirect()->route('orders.show', $order );
         
     }
 }
