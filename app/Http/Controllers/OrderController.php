@@ -64,15 +64,17 @@ class OrderController extends Controller
 
         $response = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-2921571520296494-052409-d27092cd358fc3d046b47e83988f8304-472718708");
         
-        $response = json_decode($response);
-
-        $order->efectivo = json_encode($response);
+        $response = json_decode($response); 
 
         $status = $response->status;
 
-        if ($status == 'approved') {
-           $order->status = 2;
+        if ($status == 'pending') {
+            $order->efectivo = json_encode($response);
         }
+
+        if ($status == 'approved') {
+            $order->status = 2;
+         }
 
         $order->save();
 
