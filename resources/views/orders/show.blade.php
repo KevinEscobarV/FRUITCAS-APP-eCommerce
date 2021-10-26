@@ -1,4 +1,24 @@
 <x-app-layout>
+
+    <x-slot name="header">
+        <div class="flex items-center">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
+                <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+            </svg>
+            <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Orden : {{ $order->id }}
+            </div>
+
+            @if ($order->status <> 1 && $order->status <> 5)
+            <x-button-enlace color="indigo" class="ml-auto" target="blank" href="{{ route('order.factura.pdf', $order) }}">
+                Ver Factura
+            </x-button-enlace> 
+            @endif
+           
+        </div>
+    </x-slot>
+
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
 
@@ -85,7 +105,7 @@
 
                     @if ($order->envio_type == 1)
                     <p>Los productos deben ser recogidos en tienda</p>
-                    <p>FruitCas Tauramena Casanare Calle 6 # 9 - 58</p>                      
+                    <p>FruitCas Tauramena Casanare Carrera 8 # 5 - 40 Barrio Palmarito</p>                      
                     @else
                     <p>Los productos seran enviados a:</p>
                     <p>{{{$envio->address}}}</p>

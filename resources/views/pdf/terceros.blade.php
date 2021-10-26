@@ -19,13 +19,22 @@
         .text-center {
             text-align: center;
         }      
+        .inline {
+            display: inline;
+        }
+
     </style>
 </head>
+
 <body>
+
     <div>
-        <h1>FRUITCAS / Terceros</h1>
-        <P>Fecha de creacion del reporte: {{$fecha}}</P>
+        <img class="inline" src="{{ asset('img/logo-fruitcas.jpg') }}" alt="Logo" height="70px">
+        <h1 class="inline"> / Terceros</h1>
     </div>
+
+    <P>Fecha de creacion del reporte: {{ $fecha }}</P>
+    
     <table class="table">
         <thead class="table-head">
             <tr>

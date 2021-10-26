@@ -72,6 +72,33 @@ function generarGraficaVentas() {
   });
 }
 
+function generarGraficaProducts() {
+  var ctx = document.getElementById('ChartBarProducts').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: nomProducts,
+      datasets: [{
+        label: 'Grfica de Barras de Productos',
+        data: cantProducts,
+        backgroundColor: 
+          'rgba(0, 219, 216, 0.2)',     
+        borderColor: 
+          'rgba(0, 219, 216, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+}
+
 function generarGraficaFruits() {
   var ctx = document.getElementById('ChartBarFruits').getContext('2d');
   var myChart = new Chart(ctx, {
@@ -97,6 +124,32 @@ function generarGraficaFruits() {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)'
         ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  var ctx = document.getElementById('ProductsBar').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: nomFruits,
+      datasets: [{
+        label: 'Grfica de Barras de Materia Prima',
+        data: cantFruits,
+        backgroundColor:
+          'rgba(0, 155, 255, 0.2)'
+          ,
+        borderColor: 
+          'rgba(19, 109, 167, 1)',
+         
         borderWidth: 1
       }]
     },

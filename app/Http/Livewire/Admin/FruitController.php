@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Fruit;
+use Carbon\Carbon;
+use Jenssegers\Date\Date;
 use Livewire\Component;
 
 class FruitController extends Component
 {
 
-    public $fruits, $fruit;
+    public $fruits, $fruit, $total, $unidades, $totalprice = 0, $suma = 0, $fecha, $search = "0";
 
     protected $listeners = ['delete'];
 
@@ -51,7 +53,27 @@ class FruitController extends Component
     }
 
     public function getFruits(){
-        $this->fruits = Fruit::all();
+
+        $this->reset('suma');
+
+        if ($this->search == "0") {
+            $this->fruits = Fruit::all();
+            $this->total = Fruit::count();
+            $this->unidades = Fruit::sum('quantity');
+            
+        }else{
+
+            $this->fruits = Fruit::whereMonth('created_at',"{$this->search}")->get();
+
+            $this->total = Fruit::whereMonth('created_at',"{$this->search}")->count();
+    
+            $this->unidades = Fruit::whereMonth('created_at',"{$this->search}")->sum('quantity');
+        }
+
+        foreach ($this->fruits as $fruit) {
+            $this->suma = $this->suma +  ($fruit->price * $fruit->quantity);
+        }
+
     }
 
     public function save(){
@@ -98,6 +120,10 @@ class FruitController extends Component
 
     public function render()
     {
+        if ($this->search > "0") {
+            $this->getFruits();
+        }
+
         return view('livewire.admin.fruit-controller')->layout('layouts.admin');
     }
 }

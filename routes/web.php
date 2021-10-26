@@ -49,8 +49,9 @@ Route::middleware(['auth'])->group(function (){
     
     Route::get('webhooks', WebhooksController::class);  
 
-});
+    Route::get('orders/pdf/{order}', [OrderController::class, 'PdfOrder'])->name('order.factura.pdf');
 
+});
 
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 

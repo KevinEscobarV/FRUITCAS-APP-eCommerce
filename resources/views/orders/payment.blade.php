@@ -77,7 +77,7 @@
 
                     @if ($order->envio_type == 1)
                     <p>Los productos deben ser recogidos en tienda</p>
-                    <p>FruitCas Tauramena Casanare Calle 6 # 9 - 58</p>                      
+                    <p>FruitCas Tauramena Casanare Carrera 8 # 5 - 40 Barrio Palmarito</p>                      
                     @else
                     <p>Los productos seran enviados a:</p>
                     <p>{{{$envio->address}}}</p>

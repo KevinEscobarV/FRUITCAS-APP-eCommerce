@@ -178,7 +178,7 @@
                     </span>
                   </div>
                   <!-- Chart -->
-                  <div class=" px-6">
+                  <div wire:ignore class=" px-6">
                   <canvas id="updatingMonthlyChart" width="400" height="140"></canvas>
                   </div>
                 </div>
@@ -197,6 +197,59 @@
         </div>
   
       </div> --}}
+
+      
+        <div class="w-full mx-auto sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-gray-300 to-orange-200 shadow rounded-lg px-6 py-6 mt-4 text-gray-700">
+        <div class="flex">
+            {{-- <x-jet-input type="month" class="w-full" />  --}}         
+                <select wire:model="month"
+
+                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option value="0" selected disabled>Seleccione un Mes</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+
+        </div>
+        <div class="grid grid-cols-4 gap-4 my-6">
+            <div class="bg-green-400 rounded-md p-8">
+                <p class="text-lg text-white text-center">Productos Entrada</p>
+                <p class="text-2xl font-bold text-white text-center"><i class="fas fa-apple-alt mr-2 mt-3"></i>{{$total}}</p>
+            </div>
+            <div class="bg-purple-500 rounded-md p-8">
+                <p class="text-lg text-white text-center">Unidades en Inventario</p>
+                <p class="text-2xl font-bold text-white text-center"><i class="fas fa-truck-loading mr-2 mt-3"></i>{{$unidades}}</p>
+            </div>
+            <div class="bg-blue-400 rounded-md p-8">
+                <p class="text-lg text-white text-center">Valor Total en Inventario</p>
+                <p class="text-2xl font-bold text-white text-center mt-3">$ {{ number_format($suma) }} COP</p>
+            </div>
+            <div class="bg-yellow-400 rounded-md p-8">
+                <p class="text-lg text-white text-center">Fecha del Inventario</p>
+                <p class="text-2xl font-bold text-white text-center capitalize"><i class="far fa-calendar-alt mr-2 mt-3"></i>
+                    @if ($month == 0)
+                        Todos los meses
+                    @else
+                        {{$month}} / {{ Date::now()->format('Y')}}
+                    @endif
+                </p>
+            </div>
+        </div>
+        <div wire:ignore class="border rounded-lg shadow-sm p-4 bg-white">
+            <canvas id="ChartBarProducts" width="600" height="200"></canvas>
+          </div>
+    </div></div>
 
 
       <div class="py-6">
@@ -227,9 +280,21 @@
                                         Estado
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Precio
-                                    </th>
+                                    class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                    Cantidad
+                                </th>
+                                    <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Valor Unitario
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Valor Total
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    % del Total
+                                </th>
                                     @can('products.edit')
                                         <th scope="col" class="relative px-6 py-3">
                                             <span class="sr-only">Editar</span>
@@ -288,13 +353,42 @@
 
 
                                         </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                                                                   
+                                         
+                                          @if ($product->quantity)
+                                          {{ $product->quantity }}                                            
+                                          @else
+                                          <p class=" text-xs">Cantidad definida</p>
+                                          <p class=" text-xs">por Color o Tamaño</p>
+                                          @endif
+
+                                
+                                      </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             $ {{ number_format($product->price) }} COP
                                         </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                          <span
+                                              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                              $ {{ number_format($product->price * $product->quantity) }} COP
+                                          </span>
+                                      </td>
+                                      <td class="px-6 py-4 whitespace-nowrap">
+                                          <span
+                                              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-orange-100 text-orange-800">
+                                              @if ($unidades <> 0)
+                                              % {{ number_format(($product->quantity * 100) / $unidades, 2)}}  
+                                              @else
+                                              % Definido por Color y Tamaño
+                                              @endif
+                                              
+                                          </span>
+                                      </td>
                                         @can('products.edit')
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                                 <a href="{{ route('admin.products.edit', $product) }}"
-                                                    class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                                    class="text-indigo-600 hover:text-indigo-900"><i class="far fa-edit"></i></a>
                                             </td>
                                         @endcan
                                     </tr>
@@ -360,5 +454,22 @@
 
         generarGraficaBig();
     })
+
+    var nomProducts=[];
+    var cantProducts=[];
+
+    $.ajax({
+    headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+    url: 'admin/chartProducts',
+    method: 'POST',
+    }).done(function(resProducts){     
+        var arreglo = JSON.parse(resProducts);
+
+        for (let x = 0; x < arreglo.length; x++) {
+        nomProducts.push(arreglo[x].name);
+        cantProducts.push(arreglo[x].quantity);
+        }
+        generarGraficaProducts();
+    });
   </script>
 @endpush

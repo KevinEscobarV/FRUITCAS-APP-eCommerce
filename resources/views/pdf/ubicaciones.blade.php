@@ -26,13 +26,22 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
+        .inline {
+            display: inline;
+        }
+
     </style>
 </head>
+
 <body>
+
     <div>
-        <h1>FRUITCAS / Ubicaciones de envío</h1>
-        <P>Fecha de creacion del reporte: {{$fecha}}</P>
+        <img class="inline" src="{{ asset('img/logo-fruitcas.jpg') }}" alt="Logo" height="70px">
+        <h1 class="inline"> / Ubicaciones de envio</h1>
     </div>
+
+    <P>Fecha de creacion del reporte: {{ $fecha }}</P>
+    
     <table class="table">
         <thead class="table-head">
             <tr>

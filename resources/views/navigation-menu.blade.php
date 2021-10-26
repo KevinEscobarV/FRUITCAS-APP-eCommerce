@@ -153,14 +153,11 @@
 
                         <x-jet-dropdown align="right" width="48">
                             <x-slot name="trigger">
-
                                 <button
                                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-
-
                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewBox="0 0 24 24"
-                                        class="h-8 w-8 rounded-full object-cover text-teal-800">
+                                        class="h-9 w-9 rounded-full object-cover text-gray-500">
                                         <path
                                             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
                                         </path>

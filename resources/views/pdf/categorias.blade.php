@@ -19,16 +19,22 @@
 
         .text-center {
             text-align: center;
-        }      
+        }
+
+        .inline {
+            display: inline;
+        }
     </style>
 </head>
 
 <body>
 
     <div>
-        <h1>FRUITCAS / Categorias</h1>
-        <P>Fecha de creacion del reporte: {{$fecha}}</P>
+        <img class="inline" src="{{ asset('img/logo-fruitcas.jpg') }}" alt="Logo" height="70px">
+        <h1 class="inline"> / Categorias</h1>
     </div>
+
+    <P>Fecha de creacion del reporte: {{ $fecha }}</P>
 
     <table class="table">
         <thead class="table-head">
@@ -43,12 +49,12 @@
         <tbody>
             @foreach ($subcategories as $subcategory)
                 <tr>
-                    <td>{{ $subcategory->created_at}}</td>
+                    <td>{{ $subcategory->created_at }}</td>
                     <td class="text-center">{{ $subcategory->id }}</td>
                     <td>{{ $subcategory->name }}</td>
                     <td>{{ $subcategory->category->name }}</td>
-                    <td class="text-center">{{ $subcategory->products->count()}}</td>
-                    
+                    <td class="text-center">{{ $subcategory->products->count() }}</td>
+
                 </tr>
             @endforeach
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -44,6 +46,23 @@ class OrderController extends Controller
         return view('orders.show', compact('order', 'items', 'envio', 'efectivo'));
     }
 
+    public function PdfOrder(Order $order)
+    {
+
+        $this->authorize('author', $order);
+
+        $items = json_decode($order->content);
+        $envio = json_decode($order->envio);
+
+        $fecha = Carbon::now()->format("F j, Y, g:i a");
+        
+        $datos = compact('fecha', 'order', 'items', 'envio');
+
+        $pdf = PDF::loadView('pdf.factura', $datos);
+
+        return $pdf->stream();
+    }
+
 
     public function payment(Order $order){
 
@@ -62,7 +81,7 @@ class OrderController extends Controller
     {
         $payment_id = $request->get('payment_id');
 
-        $response = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-2921571520296494-052409-d27092cd358fc3d046b47e83988f8304-472718708");
+        $response = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-8462528962068398-092819-c532ad93fd75b3d6f0f68eeb2882127d-472718708");
         
         $response = json_decode($response); 
 

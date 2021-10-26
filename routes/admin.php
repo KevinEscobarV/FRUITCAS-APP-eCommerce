@@ -46,6 +46,8 @@ Route::get('fruits', FruitController::class)->name('admin.fruits.index');
 
 Route::post('/chart', [ShowProducts::class, 'chart']);
 
+Route::post('/chartProducts', [ShowProducts::class, 'chartProducts']);
+
 Route::post('/chartUser', [ChartsController::class, 'chartUser']);
 
 Route::post('/orders/chartVentas', [ChartsController::class, 'chartVentas']);
