@@ -85,7 +85,7 @@
                 <select wire:model="search"
 
                     class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="" selected disabled>Seleccione un Mes</option>
+                    <option value="0" selected disabled>Seleccione un Mes</option>
                     <option value="1">Enero</option>
                     <option value="2">Febrero</option>
                     <option value="3">Marzo</option>
