@@ -9,7 +9,12 @@
             </svg>
             <div class="ml-4 text-lg text-gray-500 leading-7 font-semibold">Modificar estado de Orden -{{ $order->id }}
             </div>
-            <x-button-enlace color="teal" class="ml-auto" href="{{ route('admin.orders.index') }}">
+            @if ($order->status <> 1 && $order->status <> 5)
+            <x-button-enlace color="indigo" class="ml-auto" target="blank" href="{{ route('order.factura.pdf', $order) }}">
+                Ver Factura
+            </x-button-enlace> 
+            @endif
+            <x-button-enlace color="teal" class="ml-2" href="{{ route('admin.orders.index') }}">
                 Volver
             </x-button-enlace>
         </div>

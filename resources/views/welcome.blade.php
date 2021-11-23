@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="bg-no-repeat bg-cover bg-center" style="background-image:url('/img/fondo25-t.png');">
+    <div >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             @foreach ($categories as $category)
 
                 <section mb-6>
                     <br>
-                    <div class="flex items-center mb-2">
-                        <h1 class="text-lg uppercase font-semibold text-gray-600">
+                    <div class="flex items-center bg-gradient-to-r from-blueGray-500 rounded-md py-3 px-4  mb-4">
+                        <h1 class="text-xl uppercase font-semibold text-white">
                             {{ $category->name }}
                         </h1>
                         <a href="{{ route('categories.show', $category) }}"

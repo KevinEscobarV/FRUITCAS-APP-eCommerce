@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div style="background-image:url('/img/fondo-p.jpg');" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 rounded-lg shadow-md my-8 bg-cover">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 rounded-lg shadow-md my-8 bg-gray-100 border-blueGray-400 border-2">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 
             <div>
@@ -7,7 +7,7 @@
                     <ul class="slides">
 
                         @foreach ($product->images as $image)
-                        
+
                             <li data-thumb="{{ Storage::url($image->url) }}">
                                 <img class="rounded-md object-cover object-center" src="{{ Storage::url($image->url) }}" />
                             </li>
@@ -35,13 +35,13 @@
                 </div>
                 <p class="text-2xl font-semibold text-teal-900 my-4">$ {{ number_format($product->price) }} COP</p>
 
-                <div class=" bg-white rounded-lg shadow-lg mb-6 ring-2 ring-gray-200">
+                <div class=" bg-blueGray-400 rounded-lg shadow-md mb-6">
                     <div class="p-4 flex items-center">
-                        <span class="flex items-center justify-center h-20 w-32 rounded-full bg-teal-500">
+                        <span class="flex items-center justify-center h-20 w-32 rounded-full bg-teal-500 ring-2 ring-white">
                             <i class="fas fa-truck text-3xl text-white"></i>
                         </span>
                         <div class="ml-4">
-                            <p class="text-lg font-semibold text-teal-600">El servicio de envio se encuentra interrumpido para nuestros clientes pese al COVID-19</p>
+                            <p class="text-lg font-semibold text-white">El servicio de envio se encuentra interrumpido para nuestros clientes pese al COVID-19</p>
                             <p class="capitalize">Recibelo el
                                 {{ Date::now()->addDay(15)->locale('es')->format('l j F') }}</p>
                         </div>

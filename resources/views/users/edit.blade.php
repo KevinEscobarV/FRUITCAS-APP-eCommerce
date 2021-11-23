@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <div class="flex items-center">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -42,7 +42,7 @@
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">
                                 <img alt="testimonial"
-                                    class="w-20 h-20 mb-2 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                                    class="w-40 h-40 mb-2 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
                                     src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
                             </dt>
                         </div>
@@ -111,4 +111,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>

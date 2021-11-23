@@ -36,7 +36,7 @@
 
 <body class="font-sans antialiased">
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 bg-cover bg-fixed" style="background-image:url('/img/fondo32-t.jpg');">
 
         @livewire('navigation-menu')
 
@@ -44,7 +44,7 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <div class="bg-gray-150 shadow">
+            <div class="bg-white bg-opacity-60 shadow">
                 <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
@@ -78,8 +78,8 @@
             title: 'ChatBot FruitCas',
             aboutText: 'Fruitcas',
             placeholderText: 'Saluda o enviale un mensaje al Bot',
-            mainColor: '#FFCD00',
-            bubbleBackground: '#FFCD00',
+            mainColor: '#007AB8',
+            bubbleBackground: '#007AB8',
             introMessage: "✋ Hola! Estoy aqui para ayudarte",
         };
     </script>

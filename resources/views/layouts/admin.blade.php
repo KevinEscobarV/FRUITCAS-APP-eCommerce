@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
     {{-- chart --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css" />
+    
 
 
     @livewireStyles
@@ -35,8 +36,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- Dropzone --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
-    {{-- Chart --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
 
 
 
@@ -44,13 +43,13 @@
 
 <body class="font-sans antialiased">
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 bg-cover bg-fixed" style="background-image:url('/img/fondo33-t.jpg');">
 
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
         @if (isset($header))
-            <div class="bg-gray-150 shadow">
+            <div class="bg-white bg-opacity-60 shadow">
                 <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>

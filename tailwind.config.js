@@ -18,6 +18,8 @@ module.exports = {
                 colors: {
                   orange: colors.orange,
                   teal: colors.teal,
+                  blueGray: colors.blueGray,
+                  sky: colors.sky,
             },
 
                 backgroundImage: theme => ({

@@ -71,3 +71,5 @@ Route::get('rolespdf/pdf', [PDFController::class, 'pdfRoles'])->name('admin.role
 Route::get('ordenes/pdf', [PDFController::class, 'pdfOrders'])->name('admin.ordenes.pdf');
 
 Route::get('materia/pdf', [PDFController::class, 'pafMateria'])->name('admin.materia.pdf');
+
+Route::get('orders/pdf/{order}', [OrderController::class, 'PdfOrder'])->name('order.factura.pdf');

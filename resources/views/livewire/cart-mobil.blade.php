@@ -1,5 +1,5 @@
 <div>
-    <a href="">
+    <a href="{{route('shopping-cart')}}">
         <span class="relative inline-block cursor-pointer">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 viewBox="0 0 24 24" class="ml-6 h-8 w-8 object-cover text-white">

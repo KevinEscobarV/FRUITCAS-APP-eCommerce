@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use PDF;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -30,5 +31,17 @@ class OrderController extends Controller
 
     public function show(Order $order){
         return view('admin.orders.show', compact('order'));
+    }
+
+    public function PdfOrder(Order $order)
+    {
+        $items = json_decode($order->content);
+        $envio = json_decode($order->envio);  
+        
+        $datos = compact('order', 'items', 'envio');
+
+        $pdf = PDF::loadView('pdf.factura', $datos);
+
+        return $pdf->stream();
     }
 }

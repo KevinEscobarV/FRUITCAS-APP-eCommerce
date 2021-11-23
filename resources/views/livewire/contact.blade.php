@@ -1,14 +1,14 @@
 <div>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                 <section class="text-gray-600 body-font relative">
                     <div class="absolute inset-0 bg-gray-300">
                         <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map"
                             scrolling="no"
-                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=+(Gobernaci%C3%B3n%20de%20Casanare,%20Carrera%2020,%20Yopal,%20Casanare)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                            style="filter: grayscale(1) contrast(1.2) opacity(0.9);"></iframe>                           
+                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=+(tauramena)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                            style="filter: grayscale(0.5) contrast(1.2) opacity(1);"></iframe>                           
 
                     </div>
                     <div class="container px-5 py-24 mx-auto flex">
