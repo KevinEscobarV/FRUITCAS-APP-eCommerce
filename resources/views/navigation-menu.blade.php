@@ -124,7 +124,7 @@
 
                                 @role('Administrador')
                                 <x-jet-dropdown-link href="{{ route('admin.index') }}"
-                                    class="bg-gradient-to-r from-red-200 to-orange-200">
+                                    class="bg-gradient-to-r from-red-200 to-indigo-300">
                                     {{ __('Administrador') }}
                                 </x-jet-dropdown-link>
                                 @endrole
